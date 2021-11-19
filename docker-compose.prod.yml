@@ -1,0 +1,39 @@
+version: '3'
+
+
+services:
+    db:
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: mypassword
+        
+    api:
+        build:
+            context: ./backend
+        volumes:
+            - /app/node_modules
+            - ./backend:/app
+        ports:
+            - "3001:3001"
+        depends_on:
+          - db
+
+    ui:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile-prod
+        volumes:
+            - /app/node_modules
+            - ./frontend:/app
+        ports:
+            - "80:3000"
+        environment:
+            - NODE_OPTIONS=--openssl-legacy-provider
+
+
+volumes:
+    pgdata:
+        external: true
+        

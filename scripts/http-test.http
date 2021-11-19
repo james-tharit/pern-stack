@@ -1,0 +1,7 @@
+/// client-ui
+GET http://localhost:3000
+
+###
+//for testing status of api
+GET http://localhost:3001/
+
