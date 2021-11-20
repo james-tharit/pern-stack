@@ -13,6 +13,7 @@
     return responseData;
   }
   
+  // eslint-disable-next-line
   export const post = async <T>(path: string, reqBody: any, acceptedResponseCodes: HttpStatus[]): Promise<T> => {
     const request: RequestInit = {
       method: 'POST',

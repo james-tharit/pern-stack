@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import GreetingService from './services/greeting';
 
-function App() {
+function App() : JSX.Element {
   const greetingService = new GreetingService()
   const [greetingMessage, setGreetingMessage]  = useState<string>("Click Me!")
   
