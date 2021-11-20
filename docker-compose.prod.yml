@@ -3,9 +3,12 @@ version: '3'
 
 services:
     db:
+        image: postgres:14
         restart: always
         ports:
             - "5432:5432"
+        volumes:
+            - pgdata_prod:/var/lib/postgresql/data
         environment:
             POSTGRES_PASSWORD: mypassword
         
@@ -34,6 +37,6 @@ services:
 
 
 volumes:
-    pgdata:
+    pgdata_prod:
         external: true
         

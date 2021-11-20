@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "test": "jest --watchAll",
+    "test": "jest",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [],

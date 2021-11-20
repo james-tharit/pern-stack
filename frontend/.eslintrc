@@ -1,8 +1,10 @@
-module.export = {
+{
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "react", 
+    "react-hooks"
   ],
   "extends": [
     "eslint:recommended",
