@@ -2,11 +2,11 @@ echo "move to working directory..."
 SCRIPT_DIR=$(cd $(dirname $0) ; pwd -P)
 
 cd "${SCRIPT_DIR}/../frontend"
-echo "Running Client lint ..."
+echo "Install dependencies for Client ..."
 
-yarn lint
+yarn install
 
 cd "${SCRIPT_DIR}/../backend"
-echo "Running Server lint ..."
+echo "Install dependencies for API..."
 
-yarn lint
+yarn install

@@ -1,0 +1,11 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "dev": "sh ./scripts/start-dev-env.sh",
+    "lint": "sh ./scripts/run-lint-local.sh",
+    "prod": "sh ./scripts/start-prod-env.sh",
+    "install": "sh ./scripts/install-deps.sh",
+    "stop": "docker compose down",
+    "test": "sh ./scripts/run-test-local.sh"
+  }
+}
