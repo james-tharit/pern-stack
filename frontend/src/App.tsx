@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import GreetingService from './services/greeting';
+import React, { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import GreetingService from "./services/greeting";
 
-function App() : JSX.Element {
-  const greetingService = new GreetingService()
-  const [greetingMessage, setGreetingMessage]  = useState<string>("Click Me!")
-  
-const getGreeting = async () => {
-  greetingService.getGreetingMessage()
-  .then( data => {
-    setGreetingMessage(data)
-  })
-}
+function App(): JSX.Element {
+  const greetingService = new GreetingService();
+  const [greetingMessage, setGreetingMessage] = useState<string>("Click Me!");
+
+  const getGreeting = async () => {
+    greetingService.getGreetingMessage().then((data) => {
+      setGreetingMessage(data);
+    });
+  };
 
   useEffect(() => {
-    getGreeting()
-  },[]) // eslint-disable-line react-hooks/exhaustive-deps
+    getGreeting();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="App">

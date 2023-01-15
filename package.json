@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "sh ./scripts/start-dev-env.sh",
     "lint": "sh ./scripts/run-lint-local.sh",
+    "format": "sh ./scripts/run-format.sh",
     "prod": "sh ./scripts/start-prod-env.sh",
     "install": "sh ./scripts/install-deps.sh",
     "stop": "docker compose down",

@@ -9,8 +9,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": [
-    "app.ts",
-    "tests/**/*"
-  ],
+  "include": ["app.ts", "tests/**/*"]
 }

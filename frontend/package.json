@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format": "prettier --write .",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "lint": "eslint . --ext .ts",
@@ -47,6 +48,7 @@
     "enzyme": "^3.11.0",
     "eslint": "^7.11.0",
     "msw": "^0.29.0",
+    "prettier": "^2.8.3",
     "typescript": "^4.4.4"
   }
 }
