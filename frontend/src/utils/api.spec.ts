@@ -1,4 +1,4 @@
-import { get, HttpStatus, post } from "../api";
+import { get, HttpStatus, post } from "./api";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 

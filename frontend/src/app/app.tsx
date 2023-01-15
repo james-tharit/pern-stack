@@ -1,7 +1,12 @@
-import "./App.css";
+import React from "react";
+import { Badge } from "../components/badge";
+import { useGreeting } from "../hook/useGreeting";
+import "./app.css";
 import logo from "./logo.svg";
 
-function App(): JSX.Element {
+export const App: React.FC = () => {
+  const { greetingMessage } = useGreeting();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,6 +14,9 @@ function App(): JSX.Element {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <div className="Column">
+          <Badge title={`CONNECTED TO API: ${greetingMessage}`} />
+        </div>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -20,6 +28,4 @@ function App(): JSX.Element {
       </header>
     </div>
   );
-}
-
-export default App;
+};

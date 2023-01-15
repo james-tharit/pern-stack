@@ -16,10 +16,9 @@ export const get = async <T>(
   return responseData;
 };
 
-// eslint-disable-next-line
 export const post = async <T>(
   path: string,
-  reqBody: any,
+  reqBody: unknown,
   acceptedResponseCodes: HttpStatus[]
 ): Promise<T> => {
   const request: RequestInit = {

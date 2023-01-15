@@ -1,15 +1,17 @@
 import { get, HttpStatus } from "../utils/api";
 
 export default class GreetingService {
-  async getGreetingMessage(): Promise<string> {
+  getGreetingMessage = async (): Promise<string> => {
     try {
-      const message: { status: string } = await get("http://localhost:3001/", [
-        HttpStatus.OK,
-      ]);
+      const message: { status: string } = await get(
+        "http://localhost:3001/v1/",
+        [HttpStatus.OK]
+      );
+
       return message.status;
     } catch (err) {
-      console.log(`api err:${err}`);
-      return "err";
+      console.log(`${err}`);
+      throw err;
     }
-  }
+  };
 }
