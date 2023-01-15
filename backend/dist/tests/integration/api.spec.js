@@ -18,15 +18,15 @@ describe("GET", () => {
     it("should return string from /", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield supertest_1.default(server_1.default)
             .get("/")
-            .expect('Content-Type', 'text/html; charset=utf-8')
-            .then(result => result.text);
+            .expect("Content-Type", "text/html; charset=utf-8")
+            .then((result) => result.text);
         expect(result).toBe("ok");
     }));
     it("should return status in JSON from /v1", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield supertest_1.default(server_1.default)
             .get("/v1")
-            .expect('Content-Type', /json/)
-            .then(result => result.body.status);
+            .expect("Content-Type", /json/)
+            .then((result) => result.body.status);
         expect(result).toBe("ok");
     }));
 });

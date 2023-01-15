@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_1 = __importDefault(require("./api"));
 const allowHosts = {
-    origin: 'http://localhost:3000'
+    origin: "http://localhost:3000",
 };
 const server = express_1.default();
 server.use(express_1.default.json());

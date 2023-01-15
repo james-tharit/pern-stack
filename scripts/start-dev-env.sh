@@ -9,7 +9,4 @@ echo "STEP 1/2: create pgdata volume..."
 docker volume create pgdata
 
 echo "STEP 2/3: compose up..."
-docker compose up -d &&
-
-echo "STEP 3/3: create database & mock data"
-sh ./scripts/sample-data-pg.sh 
+docker compose up
