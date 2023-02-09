@@ -4,9 +4,9 @@ SCRIPT_DIR=$(cd $(dirname $0) ; pwd -P)
 cd "${SCRIPT_DIR}/../frontend"
 echo "Running Client format ..."
 
-yarn format
+npm format
 
 cd "${SCRIPT_DIR}/../backend"
 echo "Running Server format ..."
 
-yarn format
+npm format

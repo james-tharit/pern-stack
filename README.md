@@ -7,13 +7,13 @@
 - Install all required dependencies
 
 ```shell
-yarn install
+npm install
 ```
 
 - Start development
 
 ```shell
-yarn dev
+npm dev
 ```
 
 **Note**
@@ -27,13 +27,13 @@ yarn dev
 - Lint
 
 ```shell
-yarn lint
+npm lint
 ```
 
 - Format
 
 ```shell
-yarn format
+npm format
 ```
 
 ## Deploy mode
@@ -41,5 +41,5 @@ yarn format
 - Start development
 
 ```shell
-yarn prod
+npm prod
 ```
