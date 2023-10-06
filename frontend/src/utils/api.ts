@@ -4,7 +4,7 @@ export enum HttpStatus {
 
 export const get = async <T>(
   path: string,
-  acceptedResponseCodes: HttpStatus[]
+  acceptedResponseCodes: HttpStatus[],
 ): Promise<T> => {
   const response = await fetch(path);
   const responseData = await response.json();
@@ -19,7 +19,7 @@ export const get = async <T>(
 export const post = async <T>(
   path: string,
   reqBody: unknown,
-  acceptedResponseCodes: HttpStatus[]
+  acceptedResponseCodes: HttpStatus[],
 ): Promise<T> => {
   const request: RequestInit = {
     method: "POST",

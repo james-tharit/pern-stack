@@ -13,12 +13,12 @@ describe("API Utils", () => {
     rest.post("/success", (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({ message: "some-response", body: req.body })
+        ctx.json({ message: "some-response", body: req.body }),
       );
     }),
     rest.post("/failure", (req, res, ctx) => {
       return res(ctx.status(404), ctx.json({ message: "Not found!" }));
-    })
+    }),
   );
 
   beforeAll(() => {
@@ -42,7 +42,7 @@ describe("API Utils", () => {
 
     it("should throw error if response status is not within acceptedResponseCodes", async () => {
       await expect(get("/failure", [HttpStatus.OK])).rejects.toThrow(
-        "Not found!"
+        "Not found!",
       );
     });
   });
@@ -61,7 +61,7 @@ describe("API Utils", () => {
 
     it("should throw error if response status is not within acceptedResponseCodes", async () => {
       await expect(
-        post("/failure", { input: "some-request" }, [HttpStatus.OK])
+        post("/failure", { input: "some-request" }, [HttpStatus.OK]),
       ).rejects.toThrow("Not found!");
     });
   });

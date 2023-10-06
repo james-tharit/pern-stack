@@ -5,7 +5,7 @@ export default class GreetingService {
     try {
       const message: { status: string } = await get(
         "http://localhost:3001/v1/",
-        [HttpStatus.OK]
+        [HttpStatus.OK],
       );
 
       return message.status;
