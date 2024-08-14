@@ -7,13 +7,13 @@
 - Install all required dependencies
 
 ```shell
-npm install
+pnpm install
 ```
 
 - Start development
 
 ```shell
-npm dev
+pnpm dev
 ```
 
 **Note**
@@ -27,13 +27,13 @@ npm dev
 - Lint
 
 ```shell
-npm lint
+pnpm lint
 ```
 
 - Format
 
 ```shell
-npm format
+pnpm format
 ```
 
 ## Deploy mode
@@ -41,5 +41,5 @@ npm format
 - Start development
 
 ```shell
-npm prod
+pnpm prod
 ```
