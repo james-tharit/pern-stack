@@ -1,6 +1,5 @@
 version: '3'
 
-
 services:
     db:
         image: postgres:14
@@ -11,7 +10,7 @@ services:
             - pgdata_prod:/var/lib/postgresql/data
         environment:
             POSTGRES_PASSWORD: mypassword
-        
+
     api:
         build:
             context: ./backend
@@ -21,7 +20,7 @@ services:
         ports:
             - "3001:3001"
         depends_on:
-          - db
+            - db
 
     ui:
         build:
@@ -35,8 +34,6 @@ services:
         environment:
             - NODE_OPTIONS=--openssl-legacy-provider
 
-
 volumes:
     pgdata_prod:
         external: true
-        

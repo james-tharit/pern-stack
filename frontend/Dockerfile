@@ -1,4 +1,8 @@
-FROM node:17-alpine
+FROM node:20-slim AS base
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
 EXPOSE 3000 
 RUN mkdir -p /app
@@ -8,11 +12,11 @@ WORKDIR /app
 COPY tsconfig.json /app/tsconfig.json 
 
 COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+COPY pnpm-lock.yaml /app/pnpm-lock.yaml
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
-## install only the packages defined in the package-lock.json (faster than the normal npm install)
-RUN npm install
+## install only the packages defined in the pnpm-lock.yaml (faster than the normal pnpm install)
+RUN pnpm install
 
-# Run 'npm run dev' when the container starts.
-CMD ["npm", "start"]
+# Run 'pnpm run dev' when the container starts.
+CMD ["pnpm", "start"]
