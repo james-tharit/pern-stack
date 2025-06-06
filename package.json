@@ -8,10 +8,5 @@
     "install": "sh ./scripts/install-deps.sh",
     "stop": "docker compose down -v",
     "test": "sh ./scripts/run-test.sh"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "github:testing-library/jest-dom",
-    "jsdom": "^26.1.0",
-    "msw": "^2.9.0"
   }
-}
+  }

@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { Badge } from './components/badge';
+import { useState } from "react";
+import { Badge } from "./components/badge";
 import { useGreeting } from "./hook/useGreeting";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const { greetingMessage } = useGreeting();
 
   return (
@@ -28,12 +28,15 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <Badge color={greetingMessage === 'failed' ? 'red' : 'green'} title={`CONNECTED TO API: ${greetingMessage}`} />
+      <Badge
+        color={greetingMessage === "failed" ? "red" : "green"}
+        title={`CONNECTED TO API: ${greetingMessage}`}
+      />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

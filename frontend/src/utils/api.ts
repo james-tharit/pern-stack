@@ -6,14 +6,16 @@ export const HttpStatus = {
 
 export type HttpStatus = (typeof HttpStatus)[keyof typeof HttpStatus];
 
-export const get = async <T>(
-  path: string,
-): Promise<T> => {
+export const get = async <T>(path: string): Promise<T> => {
   const response = await fetch(path);
 
   if (response.status !== HttpStatus.OK) {
-    const errorData = await response.json().catch(() => ({ message: `HTTP Error: ${response.status}` }));
-    throw new Error(errorData.message || `Request failed with status: ${response.status}`);
+    const errorData = await response
+      .json()
+      .catch(() => ({ message: `HTTP Error: ${response.status}` }));
+    throw new Error(
+      errorData.message || `Request failed with status: ${response.status}`,
+    );
   }
 
   const responseData = await response.json();
@@ -21,10 +23,7 @@ export const get = async <T>(
   return responseData;
 };
 
-export const post = async <T>(
-  path: string,
-  reqBody: unknown,
-): Promise<T> => {
+export const post = async <T>(path: string, reqBody: unknown): Promise<T> => {
   const request: RequestInit = {
     method: "POST",
     headers: {
@@ -36,8 +35,12 @@ export const post = async <T>(
   const response = await fetch(path, request);
 
   if (response.status !== HttpStatus.OK) {
-    const errorData = await response.json().catch(() => ({ message: `HTTP Error: ${response.status}` }));
-    throw new Error(errorData.message || `Request failed with status: ${response.status}`);
+    const errorData = await response
+      .json()
+      .catch(() => ({ message: `HTTP Error: ${response.status}` }));
+    throw new Error(
+      errorData.message || `Request failed with status: ${response.status}`,
+    );
   }
 
   const responseData = await response.json();
