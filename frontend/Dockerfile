@@ -8,9 +8,7 @@ EXPOSE 3000
 RUN mkdir -p /app
 WORKDIR /app
 
-##ignore if don't have react with typescript
-COPY tsconfig.json /app/tsconfig.json 
-
+COPY vite.config.ts /app/vite.config.ts
 COPY package.json /app/package.json
 COPY pnpm-lock.yaml /app/pnpm-lock.yaml
 
@@ -19,4 +17,4 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN pnpm install
 
 # Run 'pnpm run dev' when the container starts.
-CMD ["pnpm", "start"]
+CMD ["pnpm", "dev"]

@@ -9,4 +9,4 @@
     "stop": "docker compose down -v",
     "test": "sh ./scripts/run-test.sh"
   }
-  }
+ }
