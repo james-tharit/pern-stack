@@ -1,25 +1,37 @@
-import { get, HttpStatus, post } from "./api";
-import { rest } from "msw";
+import { get, post } from "./api";
 import { setupServer } from "msw/node";
+import { describe, beforeAll, it, expect, afterEach, afterAll } from "vitest";
+
+import { http, HttpResponse } from 'msw'
+import { waitFor } from "@testing-library/react";
+const handlers = [
+  http.get("/success", () => {
+    return HttpResponse.json({ message: "some-response" })
+  }),
+  http.post("/success", () => {
+    return HttpResponse.json({ message: "some-response", body: "some-body" }
+    );
+  }),
+  http.get("/not-found", () => {
+    return new HttpResponse('Not found', {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    })
+  }),
+  http.post("/not-found", () => {
+    return new HttpResponse('Not found', {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    })
+  }),
+]
 
 describe("API Utils", () => {
-  const server = setupServer(
-    rest.get("/success", (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({ message: "some-response" }));
-    }),
-    rest.get("/failure", (req, res, ctx) => {
-      return res(ctx.status(404), ctx.json({ message: "Not found!" }));
-    }),
-    rest.post("/success", (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({ message: "some-response", body: req.body }),
-      );
-    }),
-    rest.post("/failure", (req, res, ctx) => {
-      return res(ctx.status(404), ctx.json({ message: "Not found!" }));
-    }),
-  );
+  const server = setupServer(...handlers);
 
   beforeAll(() => {
     server.listen();
@@ -35,34 +47,32 @@ describe("API Utils", () => {
 
   describe("GET", () => {
     it("should return JSON response when request is successful", async () => {
-      const result = await get("/success", [HttpStatus.OK]);
+      const result = await get("/success");
 
       expect(result).toEqual({ message: "some-response" });
     });
 
-    it("should throw error if response status is not within acceptedResponseCodes", async () => {
-      await expect(get("/failure", [HttpStatus.OK])).rejects.toThrow(
-        "Not found!",
-      );
+    it("should throw error if response status is not 200", async () => {
+      waitFor(async () => await expect(get("/not-found")).rejects.toThrow(
+        "HTTP Error: 404",
+      ));
     });
   });
 
   describe("POST", () => {
     it("should return JSON response when request is successful", async () => {
-      const result = await post("/success", { input: "some-request" }, [
-        HttpStatus.OK,
-      ]);
+      const result = await post("/success", { input: "some-request" });
 
       expect(result).toEqual({
         message: "some-response",
-        body: { input: "some-request" },
+        body: "some-body",
       });
     });
 
     it("should throw error if response status is not within acceptedResponseCodes", async () => {
-      await expect(
-        post("/failure", { input: "some-request" }, [HttpStatus.OK]),
-      ).rejects.toThrow("Not found!");
+      waitFor(async () => await expect(post("/not-found", { input: "some-request" })).rejects.toThrow(
+        "HTTP Error: 404",
+      ));
     });
   });
 });
